@@ -15,10 +15,11 @@
 # NOTE: This list must come from the latest go1.xx package specfile.
 %define tsan_arch x86_64 aarch64 s390x ppc64le
 
-Name:           go
-Version:        1.23
 # Version must always be a valid golang(API) version
-%define api_version %{version}
+%define api_version 1.23
+
+Name:           go
+Version:        %{api_version}
 Release:        1
 Summary:        A compiled, garbage-collected, concurrent programming language
 License:        BSD-3-Clause
