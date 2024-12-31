@@ -12,24 +12,14 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via https://bugs.opensuse.org/
-#
-
-# NOTE: This logic must come from the latest go1.x package specfile.
-# We only build go-race on supported systems.
-%if 0%{suse_version} >= 1500 || 0%{?sle_version} >= 150000
+# NOTE: This list must come from the latest go1.xx package specfile.
 %define tsan_arch x86_64 aarch64 s390x ppc64le
-%else
-# Cannot use {nil} here (ifarch doesn't like it) so just make up a fake
-# architecture that no build will ever match.
-%define tsan_arch openSUSE_FAKE_ARCH
-%endif
 
 Name:           go
 Version:        1.23
 # Version must always be a valid golang(API) version
 %define api_version %{version}
-Release:        0
+Release:        1
 Summary:        A compiled, garbage-collected, concurrent programming language
 License:        BSD-3-Clause
 Group:          Development/Languages/Go
@@ -101,18 +91,13 @@ install -D -m 0644 %{S:0} %{buildroot}/usr/share/doc/packages/go-race/README
 %endif
 
 %files
-%defattr(-,root,root,-)
 %doc /usr/share/doc/packages/go/
 
 %files doc
-%defattr(-,root,root,-)
 %doc /usr/share/doc/packages/go-doc/
 
 %ifarch %{tsan_arch}
 %files race
 %doc /usr/share/doc/packages/go-race/
-%defattr(-,root,root,-)
 %endif
-
-%changelog
 
