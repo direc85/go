@@ -24,7 +24,8 @@ Summary:        A compiled, garbage-collected, concurrent programming language
 License:        BSD-3-Clause
 Group:          Development/Languages/Go
 Url:            http://golang.org
-Source:         README
+Source:         %{name}-%{version}.tar.xz
+Source1:        README
 Recommends:     go-doc = %{version}
 ExclusiveArch:  %ix86 x86_64 %arm aarch64 ppc64 ppc64le s390x riscv64
 # We provide golang(API) so that projects can Prefer: go. Any project using Go
@@ -84,10 +85,10 @@ Go runtime race detector libraries. Install this package if you wish to use the
 %build
 
 %install
-install -D -m 0644 %{S:0} %{buildroot}/usr/share/doc/packages/go/README
-install -D -m 0644 %{S:0} %{buildroot}/usr/share/doc/packages/go-doc/README
+install -D -m 0644 %{S:1} %{buildroot}/usr/share/doc/packages/go/README
+install -D -m 0644 %{S:1} %{buildroot}/usr/share/doc/packages/go-doc/README
 %ifarch %{tsan_arch}
-install -D -m 0644 %{S:0} %{buildroot}/usr/share/doc/packages/go-race/README
+install -D -m 0644 %{S:1} %{buildroot}/usr/share/doc/packages/go-race/README
 %endif
 
 %files
