@@ -16,7 +16,7 @@
 %define tsan_arch x86_64 aarch64 s390x ppc64le
 
 # Version must always be a valid golang(API) version
-%define api_version 1.23
+%define api_version 1.24
 
 Name:           go
 Version:        %{api_version}
